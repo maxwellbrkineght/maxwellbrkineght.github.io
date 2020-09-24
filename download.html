@@ -66,16 +66,31 @@
       document.getElementById("maintext").style.setProperty('font-weight', 'bold');
     }
 
-    document.getElementById("filename").textContent=decode(filename);
-    document.title = "Download " + decode(filename);
+    var src=decode(source);
+    var fn=decode(filename);
 
-    function download() {
-      window.open(decode(source), '_blank');
+    if (src.includes('undefined') || fn.includes('undefined')) {
+      document.title = "ERROR";
+      document.getElementById("maintext").textContent="ERROR";
+      document.getElementById("maintext").style.setProperty('border-color', '#e74c3c');
+      document.getElementById("maintext").style.setProperty('font-weight', 'bold');
+    }else {
+
+      document.getElementById("filename").textContent=decode(filename);
+      document.title = "Download " + decode(filename);
+
+      function download() {
+        window.open(decode(source), '_blank');
+      }
+
+      function kasihcendol() {
+        window.open('https://trakteer.id/maxxwellbrkin', '_blank');
+      }
+
     }
 
-    function kasihcendol() {
-      window.open('https://trakteer.id/maxxwellbrkin', '_blank');
-    }
+
+
 
 
 
