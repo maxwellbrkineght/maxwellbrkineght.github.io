@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>maxwellbrkineght.github.io</title>
+
+    <style type='text/css'>
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .error {
+      margin-top: 30px;
+      padding: 20px;
+      border-left: 4px solid #e74c3c;
+      margin-left: 30px;
+      display: none;
+    }
+
+    </style>
+  </head>
+  <body>
+
+    <div class='error' id='__err'></div>
+
+    <script src='listed_articles.json' type='text/javascript'></script>
+
+    <script type="text/javascript">
+
+        var url       = new URL(window.location.href);
+        var name      = url.searchParams.get("name");
+
+        if (name == null || name == '')
+        {
+          call_err();
+        }
+        else
+        {
+          var comic    = JSON.parse(data);
+          var c_index  = null;
+
+          for (var i=0;i < comic.length;i++) {
+             if (comic[i].name == name) {
+               c_index = i;
+               break;
+             }
+          }
+
+          if (c_index == null) {
+            call_err();
+          }else {
+            window.location.href = comic[c_index].post_link;
+          }
+        }
+
+        function call_err() {
+          document.title = "ERROR";
+          document.getElementById("__err").style.setProperty('display', 'block');
+          document.getElementById("__err").textContent = "ERROR";
+        }
+
+    </script>
+
+  </body>
+</html>
