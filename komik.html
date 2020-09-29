@@ -31,9 +31,9 @@
     <script type="text/javascript">
 
         var url       = new URL(window.location.href);
-        var name      = url.searchParams.get("name");
+        var slug      = url.searchParams.get("baca");
 
-        if (name == null || name == '')
+        if (slug == null || slug == '')
         {
           call_err();
         }
@@ -43,7 +43,7 @@
           var c_index  = null;
 
           for (var i=0;i < comic.length;i++) {
-             if (comic[i].name == name) {
+             if (comic[i].slug == slug) {
                c_index = i;
                break;
              }
